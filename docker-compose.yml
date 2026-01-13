@@ -20,8 +20,13 @@ services:
       ollama:
         condition: service_healthy
     command: >
-      sh -c "echo 'Waiting for Ollama...'; sleep 5; 
-             echo 'Requesting model pull...'; 
+      sh -c "echo 'Waiting for Ollama...';
+             # Пытаемся подключиться в цикле, пока не получится
+             while ! curl -s http://ollama:11434/api/tags > /dev/null; do
+                 echo 'Ollama not ready, retrying in 2s...';
+                 sleep 2;
+             done;
+             echo 'Ollama is ready! Pulling model...';
              curl -X POST http://ollama:11434/api/pull -d '{\"name\": \"qwen2.5:7b\"}'"
 
   nginx:
