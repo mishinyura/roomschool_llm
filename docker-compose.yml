@@ -27,7 +27,7 @@ services:
                  sleep 2;
              done;
              echo 'Ollama is ready! Pulling model...';
-             curl -X POST http://ollama:11434/api/pull -d '{\"name\": \"qwen2.5:7b\"}'"
+             curl -X POST http://ollama:11434/api/pull -d '{\"name\": \"qwen2.5:14b\"}'"
 
   nginx:
     container_name: nginx
