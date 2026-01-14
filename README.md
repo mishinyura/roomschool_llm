@@ -11,7 +11,7 @@ POST https://llm.roomschool.ru/api/chat
 
 ```json
 {
-    "model": "qwen2.5:7b",
+    "model": "qwen2.5:32b",
     "messages": [
         {
             "role": "system",
